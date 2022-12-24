@@ -18,7 +18,7 @@ slider.oninput=function(){
 
 function generateArray(){
     console.log(len)
-    let widthofBar=Math.floor(1240/len);
+    let widthofBar=Math.floor(1000/len);
     console.log(widthofBar)
     array=[]
     for(let i=0;i<len;i++){
@@ -29,7 +29,7 @@ function generateArray(){
     let element=document.createElement('div')
     element.setAttribute('class','element')
     element.style.background='red'
-     element.style.height=(array[i]*20)+'px';
+     element.style.height=(array[i]*10)+'px';
      element.style.width=widthofBar+'px'
      area.appendChild(element)
     }
@@ -51,7 +51,7 @@ play.addEventListener('click',()=>{
 
 async function pauseAnimation(){
     while(run===false){
-        await sleep(20);
+        await sleep(10);
         }    return;
     
 }
@@ -79,7 +79,7 @@ bubble_sort.addEventListener('click',async ()=>{
             h2=h2.substr(0,h2.length-2);
             h2=parseInt(h2);
             child[j+1].style.background='blue';
-            await sleep(20);
+            await sleep(10);
             if(h1>h2){
                 child[j+1].parentNode.insertBefore(child[j+1],child[j]);
             }
@@ -119,7 +119,7 @@ selection_sort.addEventListener('click',async()=>{
         child[j].style.background='blue';
         h2=h2.substr(0,h2.length-2);
         h2=parseInt(h2);
-        await sleep(20);
+        await sleep(10);
         if(h2<h1){
             child[min_index].style.background='green';
             min_index=j;
@@ -163,16 +163,16 @@ insertion_sort.addEventListener('click',async()=>{
          while(j>=0&&array[j]>key){
             child[j].style.background='blue';
             array[j+1]=array[j];
-            child[j+1].style.height=(array[j]*20)+"px";
+            child[j+1].style.height=(array[j]*10)+"px";
             if(run===false){
                 await pauseAnimation();
             }
-            await sleep(20);
+            await sleep(10);
             child[j].style.background='green';
             j--;
          } 
          child[i].style.background='green';
-         child[j+1].style.height=(key*20)+"px";
+         child[j+1].style.height=(key*10)+"px";
          array[j+1]=key;
     }
     slider.disabled=false;
@@ -209,7 +209,7 @@ async function merge(l,r){
     await merge(l,mid);
     await merge(mid+1,r);
     await mergesort(l,mid,r);
-    await sleep(20);
+    await sleep(10);
     if(run===false){
        await pauseAnimation();
     }
@@ -228,7 +228,7 @@ let j=mid+1;
     if(run===false){
         await pauseAnimation();
     }
-     await sleep(20);
+     await sleep(10);
      child[i].style.background='green';
      child[j].style.background='green';
      if(array[i]<=array[j]){
@@ -257,7 +257,7 @@ if(run===false){
     await pauseAnimation();
 }
 for(let i=l;i<=r;i++){
-    child[i].style.height=(array[i]*20)+'px';
+    child[i].style.height=(array[i]*10)+'px';
 }
 }
 
@@ -305,15 +305,15 @@ async function qsort(l,r,pivot){
     if(run===false){
         await pauseAnimation();
     }
-    await sleep(20);
+    await sleep(10);
     child[i].style.background='red'
     child[index].style.background='red'
     if(array[i]<key){
         let temp=array[index];
         array[index]=array[i];
         array[i]=temp;
-        child[index].style.height=(array[index]*20)+'px';
-        child[i].style.height=(array[i]*20)+'px';
+        child[index].style.height=(array[index]*10)+'px';
+        child[i].style.height=(array[i]*10)+'px';
         index++;
 
     }
@@ -321,8 +321,8 @@ async function qsort(l,r,pivot){
     
  }
  [array[index],array[r]]=[array[r],array[index]];
- child[index].style.height=(array[index]*20)+'px';
- child[r].style.height=(array[r]*20)+'px';
+ child[index].style.height=(array[index]*10)+'px';
+ child[r].style.height=(array[r]*10)+'px';
  child[r].style.background=pivot;
  return index;
 
