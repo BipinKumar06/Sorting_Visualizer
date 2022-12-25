@@ -9,10 +9,11 @@ var speed=document.getElementById('speed')
 var speedval=document.getElementById('speedval')
 var arraylen=document.getElementById('arraylen')
 var speedlen;
-speedlen=speed.value;
+speedlen=10*speed.value;
 speed.oninput=function(){
     speedlen=this.value;
-    speedval.innerHTML=`×${(1000-speedlen)/10}`
+    speedval.innerHTML=`×${(100-speedlen)}`
+    speedlen=10*speedlen;
 }
 var len;
 len=slider.value;
