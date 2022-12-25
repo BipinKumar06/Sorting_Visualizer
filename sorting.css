@@ -49,7 +49,9 @@ h1{
 }
 #range{
     cursor: pointer;
-    
+}
+#speed{
+    cursor: pointer;
 }
 footer{
    position: fixed;
@@ -69,4 +71,10 @@ background-color: violet;
 }
 .area div{
     margin:0px auto;
+}
+button:disabled{
+    cursor:not-allowed;
+}
+#range:disabled{
+    cursor: not-allowed;
 }
