@@ -5,7 +5,15 @@ var quick_sort=document.getElementById("quick_sort");
 var selection_sort=document.getElementById("selection_sort");
 var bubble_sort=document.getElementById("bubble_sort");
 var insertion_sort=document.getElementById("insertion_sort");
-
+var speed=document.getElementById('speed')
+var speedval=document.getElementById('speedval')
+var arraylen=document.getElementById('arraylen')
+var speedlen;
+speedlen=speed.value;
+speed.oninput=function(){
+    speedlen=this.value;
+    speedval.innerHTML=`×${(1000-speedlen)/10}`
+}
 var len;
 len=slider.value;
 console.log(len)
@@ -13,6 +21,7 @@ generateArray(len)
 slider.oninput=function(){
     len=this.value
     console.log(len)
+    arraylen.innerHTML=`${len}`
     generateArray(len)
 }
 
@@ -51,7 +60,7 @@ play.addEventListener('click',()=>{
 
 async function pauseAnimation(){
     while(run===false){
-        await sleep(10);
+        await sleep(speedlen);
         }    return;
     
 }
@@ -79,7 +88,7 @@ bubble_sort.addEventListener('click',async ()=>{
             h2=h2.substr(0,h2.length-2);
             h2=parseInt(h2);
             child[j+1].style.background='blue';
-            await sleep(10);
+            await sleep(speedlen);
             if(h1>h2){
                 child[j+1].parentNode.insertBefore(child[j+1],child[j]);
             }
@@ -119,7 +128,7 @@ selection_sort.addEventListener('click',async()=>{
         child[j].style.background='blue';
         h2=h2.substr(0,h2.length-2);
         h2=parseInt(h2);
-        await sleep(10);
+        await sleep(speedlen);
         if(h2<h1){
             child[min_index].style.background='green';
             min_index=j;
@@ -167,7 +176,7 @@ insertion_sort.addEventListener('click',async()=>{
             if(run===false){
                 await pauseAnimation();
             }
-            await sleep(10);
+            await sleep(speedlen);
             child[j].style.background='green';
             j--;
          } 
@@ -209,7 +218,7 @@ async function merge(l,r){
     await merge(l,mid);
     await merge(mid+1,r);
     await mergesort(l,mid,r);
-    await sleep(10);
+    await sleep(speedlen);
     if(run===false){
        await pauseAnimation();
     }
@@ -228,7 +237,7 @@ let j=mid+1;
     if(run===false){
         await pauseAnimation();
     }
-     await sleep(10);
+     await sleep(speedlen);
      child[i].style.background='green';
      child[j].style.background='green';
      if(array[i]<=array[j]){
@@ -305,7 +314,7 @@ async function qsort(l,r,pivot){
     if(run===false){
         await pauseAnimation();
     }
-    await sleep(10);
+    await sleep(speedlen);
     child[i].style.background='red'
     child[index].style.background='red'
     if(array[i]<key){
